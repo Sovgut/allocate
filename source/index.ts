@@ -1,50 +1,27 @@
-type Key = string;
-type Rest = string;
+import {invoke} from "./utils/invoke";
+import {AllocateSchema} from "./types";
 
-function pick(path: string): [Key, Rest] {
-    const [key, ...rest] = path.split('.');
-
-    return [key, rest.join('.')];
-}
-
-function process(source: any, current: string, required: string) {
-    const [currentKey, restCurrent] = pick(current);
-    const [requiredKey, restRequired] = pick(required);
-    let allocated: any = {};
-
-    if (currentKey === "*") {
-        if (!Array.isArray(source)) return [];
-
-        allocated = [];
-
-        for (const item of source) {
-            allocated.push(process(item, restCurrent, restRequired))
-        }
-    } else {
-        if (restCurrent.length > 0 && restRequired.length > 0) {
-            allocated[requiredKey] = process(source[currentKey], restCurrent, restRequired)
-        } else {
-            allocated[requiredKey] = source[currentKey];
-        }
-    }
-
-    return allocated;
-}
-
-export function allocate(source: any, schema: any) {
+/**
+ * A function to replace keys in an object or an array of objects following provided schema.
+ *
+ * @template TSource The type of the input source to be reshaped.
+ * @template TAllocated The type of the output object after key allocation.
+ * @param {TSource} source - The source object or array to be traversed.
+ * @param {AllocateSchema} schema - The key mapping schema where each key-value pair represents oldKey-newKey mapping.
+ * @returns {TAllocated} - The new object or array with the replaced keys.
+ */
+export function allocate<TSource = any, TAllocated = any>(source: TSource, schema: AllocateSchema): TAllocated {
     let allocated = Array.isArray(source) ? [] : {};
 
     for (const current of Object.keys(schema)) {
         const required = schema[current];
 
         if (Array.isArray(source)) {
-            allocated = [...(allocated as any[]), ...process(source, current, required)]
+            allocated = [...(allocated as any[]), ...invoke(source, [current, required])]
         } else {
-            allocated = {...allocated, ...process(source, current, required)}
+            allocated = {...allocated, ...invoke(source, [current, required])}
         }
-
-
     }
 
-    return allocated;
+    return allocated as TAllocated;
 }
