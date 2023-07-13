@@ -1,15 +1,36 @@
 {
   "name": "@sovgut/allocate",
-  "version": "1.0.0",
+  "description": "This npm package exports a handy TypeScript function named `allocate`. The package is designed to allow developers to\nreplace keys in an object or an array of objects according to a provided key mapping schema. This is especially useful\nwhen you need to reshape data according to certain rules but you want to do it without spending significant time\nformatting your data.",
+  "version": "1.0.1",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sovgut/allocate.git"
+  },
   "scripts": {
     "build": "tsc",
-    "bundle": "esbuild ./source/index.ts --bundle --platform=node --target=es2019 --outfile=./index.mjs --minify --format=esm",
+    "bundle": "esbuild ./source/index.ts --bundle --platform=node --target=es2019 --outfile=./index.js --minify --format=esm",
     "test": "jest"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "key-mapping",
+    "object-transformation",
+    "array-transformation",
+    "reshape-datav",
+    "javascript",
+    "typescript",
+    "data-manipulation",
+    "object-manipulation",
+    "object-keys",
+    "key-allocation",
+    "key-replacement"
+  ],
   "license": "MIT",
+  "author": {
+    "email": "sergey.sovgut@outlook.com",
+    "name": "Serhii Sovhut",
+    "url": "https://github.com/Sovgut"
+  },
   "devDependencies": {
     "@types/jest": "^29.5.3",
     "esbuild": "^0.18.12",
