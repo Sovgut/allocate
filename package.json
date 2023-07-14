@@ -1,7 +1,7 @@
 {
   "name": "@sovgut/allocate",
   "description": "This npm package exports a handy TypeScript function named `allocate`. The package is designed to allow developers to\nreplace keys in an object or an array of objects according to a provided key mapping schema. This is especially useful\nwhen you need to reshape data according to certain rules but you want to do it without spending significant time\nformatting your data.",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "main": "dist/index.cjs",
   "module": "dist/index.esm.js",
   "repository": {
@@ -12,6 +12,7 @@
     "bundle:cjs": "esbuild ./source/index.ts --bundle --platform=node --target=es2019 --outfile=./dist/index.cjs --minify --format=cjs",
     "bundle:esm": "esbuild ./source/index.ts --bundle --platform=node --target=es2019 --outfile=./dist/index.esm.js --minify --format=esm",
     "bundle": "npm run bundle:cjs && npm run bundle:esm",
+    "publish": "npm run-script bundle && npm publish --access public",
     "test": "jest"
   },
   "keywords": [
