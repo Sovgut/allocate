@@ -109,7 +109,7 @@ allocated object `{ a: true }`.
 
 > If you have any suggestions or feedback, feel free to open an issue or send a PR.
 
-## Building and Bundling The Project
+## Building and Bundling
 
 #### 1. Installing Dependencies
 
