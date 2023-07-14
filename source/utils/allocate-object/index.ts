@@ -1,6 +1,7 @@
 import {invoke} from "../invoke";
 import {Keys} from "../../types";
 import {CURRENT_KEY, REQUIRED_KEY} from "../../constants";
+import {isEmpty} from "../is-empty";
 
 /**
  * Allocates the source object to a new object based on the provided key mappings.
@@ -13,7 +14,7 @@ import {CURRENT_KEY, REQUIRED_KEY} from "../../constants";
 export function allocateObject(source: any, keys: Keys, rest: Keys): any {
     const allocated: any = {};
 
-    if (rest[CURRENT_KEY]?.length > 0 && rest[REQUIRED_KEY]?.length > 0) {
+    if (!isEmpty(rest[CURRENT_KEY]) && !isEmpty(rest[REQUIRED_KEY])) {
         allocated[keys[REQUIRED_KEY]] = invoke(source[keys[CURRENT_KEY]], [rest[CURRENT_KEY], rest[REQUIRED_KEY]])
     } else {
         allocated[keys[REQUIRED_KEY]] = source[keys[CURRENT_KEY]];

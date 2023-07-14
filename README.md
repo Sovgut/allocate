@@ -1,5 +1,7 @@
 # `allocate` _(@sovgut/allocate)_
 
+[![codecov](https://codecov.io/gh/Sovgut/allocate/branch/master/graph/badge.svg)](https://codecov.io/gh/Sovgut/allocate)
+
 This npm package exports a handy TypeScript function named `allocate`. The package is designed to allow developers to
 replace keys in an object or an array of objects according to a provided key mapping schema. This is especially useful
 when you need to reshape data according to certain rules but you want to do it without spending significant time
