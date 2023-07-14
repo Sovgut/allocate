@@ -109,6 +109,30 @@ allocated object `{ a: true }`.
 
 > If you have any suggestions or feedback, feel free to open an issue or send a PR.
 
+## Building and Bundling The Project
+
+#### 1. Installing Dependencies
+
+Before building the project, make sure to install all necessary dependencies. This can be done using `npm`. Navigate to
+your project root and run:
+
+```npm install```
+
+#### 2. Bundling
+
+This project uses esbuild for bundling JavaScript files into a single file in both CommonJS and ES Module format. This
+can be done using the bundle script specified in `package.json`. Run the bundle script with the following command:
+
+```npm run bundle```
+
+> Upon success, you should now have the bundled files `index.cjs` and `index.esm.js` in your `dist` directory.
+
+#### 3. Testing
+
+```npm run test```
+
+> Remember, before publishing the package, make sure all tests are passing.
+
 ## License
 
 MIT

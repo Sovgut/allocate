@@ -9,7 +9,6 @@
     "url": "git+https://github.com/Sovgut/allocate.git"
   },
   "scripts": {
-    "build": "tsc",
     "bundle:cjs": "esbuild ./source/index.ts --bundle --platform=node --target=es2019 --outfile=./dist/index.cjs --minify --format=cjs",
     "bundle:esm": "esbuild ./source/index.ts --bundle --platform=node --target=es2019 --outfile=./dist/index.esm.js --minify --format=esm",
     "bundle": "npm run bundle:cjs && npm run bundle:esm",
