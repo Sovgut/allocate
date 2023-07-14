@@ -7,4 +7,5 @@ tsconfig.spec.json
 jest.config.js
 build
 .idea
+.github
 coverage
