@@ -5,5 +5,8 @@ LICENSE
 package-lock.json
 tsconfig.json
 tsconfig.spec.json
-jest.config.json
+jest.config.js
 build
+.idea
+LICENSE
+README.md
