@@ -1,10 +1,14 @@
 {
   "name": "@sovgut/allocate",
   "description": "This npm package exports a handy TypeScript function named `allocate`. The package is designed to allow developers to\nreplace keys in an object or an array of objects according to a provided key mapping schema. This is especially useful\nwhen you need to reshape data according to certain rules but you want to do it without spending significant time\nformatting your data.",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "dist/index.cjs",
   "module": "dist/index.esm.js",
   "types": "index.d.ts",
+  "files": [
+    "dist",
+    "index.d.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Sovgut/allocate.git"
