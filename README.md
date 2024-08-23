@@ -31,7 +31,7 @@ Replace keys in a simple object:
 ```javascript
 import { allocate } from '@sovgut/allocate'
 
-const source = { foo: true }
+const source = { foo: true, qux: false }
 const schema = { foo: 'bar' }
 
 allocate(source, schema) // { bar: true }
@@ -44,10 +44,10 @@ Handle nested structures with dot notation:
 ```javascript
 import { allocate } from '@sovgut/allocate'
 
-const source = { foo: { bar: true } }
+const source = { foo: { bar: true, baz: false } }
 const schema = { 'foo.baz': 'bar.qux' }
 
-allocate(source, schema) // { bar: { qux: true } }
+allocate(source, schema) // { bar: { qux: false } }
 ```
 
 ### Array of Objects
@@ -57,7 +57,7 @@ Apply key replacement to each object in an array:
 ```javascript
 import { allocate } from '@sovgut/allocate'
 
-const source = [{ foo: true }, { foo: true }]
+const source = [{ foo: true }, { foo: true, bar: 123 }]
 const schema = { foo: 'bar' }
 
 allocate(source, schema) // [{ bar: true }, { bar: true }]
