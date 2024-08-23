@@ -1,31 +1,37 @@
-import {invoke} from "@/utils/invoke";
-import {AllocateSchema} from "@/internal.types.ts";
+import { invoke } from '@/utils/invoke'
+import type { AllocateSchema } from '@/internal.types.ts'
 
 /**
  * A function to replace keys in an object or an array of objects following provided schema.
  *
- * @template TAllocated The type of the output object after key allocation.
- * @param {NonNullable<TAllocated>} source - The source object or array to be traversed.
+ * @template TResult The type of the output object after key allocation.
+ * @param {NonNullable<object | object[]>} source - The source object or array to be traversed.
  * @param {AllocateSchema} schema - The key mapping schema where each key-value pair represents oldKey-newKey mapping.
- * @returns {TAllocated} - The new object or array with the replaced keys.
+ * @returns {TResult} - The new object or array with the replaced keys.
  */
-export function allocate<TAllocated = any>(source: NonNullable<TAllocated>, schema: AllocateSchema): TAllocated {
-    if (typeof schema !== "object") return source as TAllocated;
-    if (typeof source !== "object") return source as TAllocated;
+export function allocate<TResult>(source: NonNullable<object | object[]>, schema: AllocateSchema): TResult {
+  if (typeof schema !== 'object') {
+    throw new TypeError('allocate(source, ->schema<-): Invalid schema')
+  }
 
-    let allocated = Array.isArray(source) ? [] : {};
+  if (typeof source !== 'object') {
+    throw new TypeError('allocate(->source<-, schema): Invalid source (it is not an object or an array)')
+  }
 
-    for (const current of Object.keys(schema)) {
-        const required = schema[current];
+  let allocated = Array.isArray(source) ? [] : {}
 
-        if (Array.isArray(source)) {
-            allocated = [...(allocated as TAllocated[]), ...invoke(source, [current, required])]
-        } else {
-            allocated = {...allocated, ...invoke(source, [current, required])}
-        }
+  for (const current of Object.keys(schema)) {
+    const required = schema[current]
+
+    if (Array.isArray(source)) {
+      allocated = [...(allocated as TResult[]), ...invoke(source, [current, required])]
     }
+    else {
+      allocated = { ...allocated, ...invoke(source, [current, required]) }
+    }
+  }
 
-    return allocated as TAllocated;
+  return allocated as TResult
 }
 
-export type {AllocateSchema} from "@/internal.types.ts"
+export type { AllocateSchema } from '@/internal.types.ts'

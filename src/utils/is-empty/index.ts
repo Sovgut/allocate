@@ -8,7 +8,8 @@
  * @returns {boolean} Returns 'true' if the value is 'undefined' or an empty string, 'false' otherwise.
  */
 export function isEmpty(value: string | undefined): boolean {
-    if (typeof value === "undefined") return true;
+  if (typeof value === 'undefined')
+    return true
 
-    return value.length === 0;
+  return value.length === 0
 }

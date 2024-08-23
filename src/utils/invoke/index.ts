@@ -1,8 +1,8 @@
-import {pick} from "@/utils/pick";
-import {allocateObject} from "@/utils/allocate-object";
-import {allocateArray} from "@/utils/allocate-array";
-import {CURRENT_KEY, REQUIRED_KEY} from "@/constants";
-import {type Keys} from "@/internal.types.ts";
+import { pick } from '@/utils/pick'
+import { allocateObject } from '@/utils/allocate-object'
+import { allocateArray } from '@/utils/allocate-array'
+import { CURRENT_KEY, REQUIRED_KEY } from '@/constants'
+import type { Keys } from '@/internal.types.ts'
 
 /**
  * Invokes the appropriate allocate function based on the source.
@@ -11,12 +11,12 @@ import {type Keys} from "@/internal.types.ts";
  * @return {any} - The resulting object after key allocation.
  */
 export function invoke(source: any, keys: Keys): any {
-    const [currentKey, restCurrent] = pick(keys[CURRENT_KEY]);
-    const [requiredKey, restRequired] = pick(keys[REQUIRED_KEY]);
+  const [currentKey, restCurrent] = pick(keys[CURRENT_KEY])
+  const [requiredKey, restRequired] = pick(keys[REQUIRED_KEY])
 
-    if (currentKey === "*") {
-        return allocateArray(source, [restCurrent, restRequired]);
-    }
+  if (currentKey === '*') {
+    return allocateArray(source, [restCurrent, restRequired])
+  }
 
-    return allocateObject(source, [currentKey, requiredKey], [restCurrent, restRequired]);
+  return allocateObject(source, [currentKey, requiredKey], [restCurrent, restRequired])
 }

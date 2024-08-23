@@ -1,4 +1,4 @@
-import {type Key, type Rest} from "@/utils/pick/types";
+import type { Key, Rest } from '@/utils/pick/types'
 
 /**
  * Splits the provided path string at the first occurrence of '.'.
@@ -6,7 +6,7 @@ import {type Key, type Rest} from "@/utils/pick/types";
  * @return {[Key, Rest]} - A tuple of key and rest of the path.
  */
 export function pick(path: string): [Key, Rest] {
-    const [key, ...rest] = path.split('.');
+  const [key, ...rest] = path.split('.')
 
-    return [key, rest.join('.')];
+  return [key, rest.join('.')]
 }

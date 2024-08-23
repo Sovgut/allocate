@@ -83,10 +83,20 @@ console.log(allocated); // Outputs: { a: { b: [ { c: true }, { c: true } ] } }
 ## API
 
 ```ts
-function allocate<TAllocated = any>(
-    source: NonNullable<TAllocated>, 
-    schema: AllocateSchema
-): TAllocated
+/**
+ * A function to replace keys in an object or an array of objects following provided schema.
+ *
+ * @template TResult The type of the output object after key allocation.
+ * @param {NonNullable<object | object[]>} source - The source object or array to be traversed.
+ * @param {AllocateSchema} schema - The key mapping schema where each key-value pair represents oldKey-newKey mapping.
+ * @returns {TResult} - The new object or array with the replaced keys.
+ */
+export declare function allocate<TResult>(source: NonNullable<object | object[]>, schema: AllocateSchema): TResult;
+
+/**
+ * A map of key value pairs that define how to replace keys in the source.
+ */
+export declare type AllocateSchema = Record<string, string>;
 ```
 
 #### Parameters:
