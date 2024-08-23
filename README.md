@@ -31,11 +31,10 @@ Replace keys in a simple object:
 ```javascript
 import { allocate } from '@sovgut/allocate'
 
-const source = { _a: true }
-const schema = { _a: 'a' }
-const allocated = allocate(source, schema)
+const source = { foo: true }
+const schema = { foo: 'bar' }
 
-console.log(allocated) // Outputs: { a: true }
+allocate(source, schema) // { bar: true }
 ```
 
 ### Nested Key Replacement
@@ -45,11 +44,10 @@ Handle nested structures with dot notation:
 ```javascript
 import { allocate } from '@sovgut/allocate'
 
-const source = { _a: { _b: true } }
-const schema = { '_a._b': 'a.b' }
-const allocated = allocate(source, schema)
+const source = { foo: { bar: true } }
+const schema = { 'foo.baz': 'bar.qux' }
 
-console.log(allocated) // Outputs: { a: { b: true } }
+allocate(source, schema) // { bar: { qux: true } }
 ```
 
 ### Array of Objects
@@ -59,11 +57,10 @@ Apply key replacement to each object in an array:
 ```javascript
 import { allocate } from '@sovgut/allocate'
 
-const source = [{ _a: true }, { _a: true }]
-const schema = { _a: 'a' }
-const allocated = allocate(source, schema)
+const source = [{ foo: true }, { foo: true }]
+const schema = { foo: 'bar' }
 
-console.log(allocated) // Outputs: [ { a: true }, { a: true } ]
+allocate(source, schema) // [{ bar: true }, { bar: true }]
 ```
 
 ### Complex Nested Structures
@@ -73,11 +70,10 @@ Work with deeply nested arrays and objects:
 ```javascript
 import { allocate } from '@sovgut/allocate'
 
-const source = { _a: { _b: [{ _c: true }, { _c: true }] } }
-const schema = { '_a._b.*._c': 'a.b.*.c' }
-const allocated = allocate(source, schema)
+const source = { foo: { bar: [{ baz: true }, { baz: true }] } }
+const schema = { 'foo.bar.*.baz': 'foo.bar.*.qux' }
 
-console.log(allocated) // Outputs: { a: { b: [ { c: true }, { c: true } ] } }
+allocate(source, schema) // { foo: { bar: [{ qux: true }, { qux: true }] } }
 ```
 
 ## API
