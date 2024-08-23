@@ -1,4 +1,4 @@
-import {type Key, type Rest} from "./types";
+import {type Key, type Rest} from "@/utils/pick/types";
 
 /**
  * Splits the provided path string at the first occurrence of '.'.

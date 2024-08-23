@@ -1,7 +1,7 @@
-import {invoke} from "../invoke";
-import {Keys} from "../../types";
-import {CURRENT_KEY, REQUIRED_KEY} from "../../constants";
-import {isEmpty} from "../is-empty";
+import {invoke} from "@/utils/invoke";
+import {Keys} from "@/internal.types.ts";
+import {CURRENT_KEY, REQUIRED_KEY} from "@/constants";
+import {isEmpty} from "@/utils/is-empty";
 
 /**
  * Allocates the source object to a new object based on the provided key mappings.
