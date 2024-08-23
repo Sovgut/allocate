@@ -1,6 +1,6 @@
-import {invoke} from "../invoke";
-import {Keys} from "../../types";
-import {CURRENT_KEY, REQUIRED_KEY} from "../../constants";
+import {invoke} from "@/utils/invoke";
+import {Keys} from "@/internal.types.ts";
+import {CURRENT_KEY, REQUIRED_KEY} from "@/constants";
 
 /**
  * Iterates over the source array and allocates each item based on the provided key mappings.

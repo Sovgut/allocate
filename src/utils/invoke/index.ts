@@ -1,8 +1,8 @@
-import {pick} from "../pick";
-import {allocateObject} from "../allocate-object";
-import {allocateArray} from "../allocate-array";
-import {CURRENT_KEY, REQUIRED_KEY} from "../../constants";
-import {type Keys} from "../../types";
+import {pick} from "@/utils/pick";
+import {allocateObject} from "@/utils/allocate-object";
+import {allocateArray} from "@/utils/allocate-array";
+import {CURRENT_KEY, REQUIRED_KEY} from "@/constants";
+import {type Keys} from "@/internal.types.ts";
 
 /**
  * Invokes the appropriate allocate function based on the source.
