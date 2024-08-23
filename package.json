@@ -1,14 +1,15 @@
 {
   "name": "@sovgut/allocate",
-  "version": "2.0.4",
   "type": "module",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Sovgut/allocate.git"
-  },
+  "version": "2.0.5",
   "author": {
     "name": "Serhii Sovhut",
     "url": "https://github.com/Sovgut"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sovgut/allocate.git"
   },
   "keywords": [
     "key-mapping",
@@ -23,7 +24,17 @@
     "key-allocation",
     "key-replacement"
   ],
-  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": "./dist/main.js"
+    }
+  },
+  "main": "./dist/main.js",
+  "module": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "vitest run",
     "build": "tsc && vite build"
@@ -32,20 +43,17 @@
     "@antfu/eslint-config": "^2.27.1",
     "@types/node": "^20.16.1",
     "eslint": "^8.57.0",
+    "lint-staged": "^15.2.9",
+    "simple-git-hooks": "^2.11.1",
     "typescript": "^5.5.4",
     "vite": "^5.4.2",
     "vite-plugin-dts": "^4.0.3",
     "vitest": "^2.0.5"
   },
-  "files": [
-    "dist"
-  ],
-  "main": "./dist/main.js",
-  "types": "./dist/main.d.ts",
-  "module": "./dist/main.js",
-  "exports": {
-    ".": {
-      "import": "./dist/main.js"
-    }
+  "simple-git-hooks": {
+    "pre-commit": "npx lint-staged"
+  },
+  "lint-staged": {
+    "*": "eslint --fix"
   }
 }
