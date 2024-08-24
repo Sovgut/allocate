@@ -92,30 +92,6 @@ allocate(source, schema) // { foo: { bar: [{ qux: true }, { qux: true }] } }
  * @returns {TResult} - The transformed object or array with the keys replaced according to the schema.
  *
  * @throws {TypeError} Throws an error if the schema is not an object or if the source is not an object or an array.
- *
- * @example Basic Key Replacement
- * const source = { foo: true };
- * const schema = { "foo": "bar" };
- * const result = allocate(source, schema);
- * // result is { bar: true }
- *
- * @example Nested Key Replacement
- * const source = { foo: { bar: true } };
- * const schema = { "foo.bar": "foo.baz" };
- * const result = allocate(source, schema);
- * // result is { foo: { baz: true } }
- *
- * @example Array of Objects
- * const source = [{ foo: true }, { foo: true }];
- * const schema = { "foo": "bar" };
- * const result = allocate(source, schema);
- * // result is [{ bar: true }, { bar: true }]
- *
- * @example Complex Nested Structures
- * const source = { foo: { bar: [{ baz: true }, { baz: true }] } };
- * const schema = { "foo.bar.*.baz": "foo.hello.*.world" };
- * const result = allocate(source, schema);
- * // result is { foo: { hello: [{ world: true }, { world: true }] } }
  */
 export declare function allocate<TResult>(source: NonNullable<object | object[]>, schema: AllocateSchema): TResult
 
@@ -126,13 +102,6 @@ export declare function allocate<TResult>(source: NonNullable<object | object[]>
  * and the values represent the required keys that will replace them in the allocated object.
  *
  * @type {Record<string, string>}
- *
- * @example
- * const schema: AllocateSchema = {
- *   "_a": "a",
- *   "_b": "b"
- * };
- * // This schema will transform { _a: true, _b: true } into { a: true, b: true }
  */
 export declare type AllocateSchema = Record<string, string>
 ```
