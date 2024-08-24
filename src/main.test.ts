@@ -19,11 +19,11 @@ describe('allocate()', () => {
   })
 
   it('should correctly map nested array fields according to the provided mapping', () => {
-    expect(allocate({ _a: [{ __b: true }, { __b: true }] }, { '_a.*.__b': 'a.*.b' })).toEqual({ a: [{ b: true }, { b: true }] })
+    expect(allocate({ _a: [{ __b: true }, { __b: true }] }, { '_a[].__b': 'a[].b' })).toEqual({ a: [{ b: true }, { b: true }] })
   })
 
   it('should correctly map another nested array field according to the provided mapping', () => {
-    expect(allocate([{ _a: true }, { _a: true }], { '*._a': '*.a' })).toEqual([{ a: true }, { a: true }])
+    expect(allocate([{ _a: true }, { _a: true }], { '[]._a': '[].a' })).toEqual([{ a: true }, { a: true }])
   })
 
   it('should throw an error if the schema argument is incorrect', () => {

@@ -23,7 +23,7 @@ import type { Keys } from '@/internal.types.ts'
  *
  * @example
  * const source = [{ _a: { __b: true } }, { _a: { __b: false } }];
- * const keys: Keys = ["_a.*.__b", "a.*.b"];
+ * const keys: Keys = ["_a[].__b", "a[].b"];
  * const result = invoke(source, keys);
  * // result is [{ a: { b: true } }, { a: { b: false } }]
  *
@@ -38,7 +38,7 @@ export function invoke(source: any, keys: Keys): any {
   const [currentKey, restCurrent] = pick(keys[CURRENT_KEY])
   const [requiredKey, restRequired] = pick(keys[REQUIRED_KEY])
 
-  if (currentKey === '*') {
+  if (currentKey === '[]') {
     return allocateArray(source, [restCurrent, restRequired])
   }
 

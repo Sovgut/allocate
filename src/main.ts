@@ -35,7 +35,7 @@ import type { AllocateSchema } from '@/internal.types.ts'
  *
  * @example Complex Nested Structures
  * const source = { foo: { bar: [{ baz: true }, { baz: true }] } };
- * const schema = { "foo.bar.*.baz": "foo.hello.*.world" };
+ * const schema = { "foo.bar[].baz": "foo.hello[].world" };
  * const result = allocate(source, schema);
  * // result is { foo: { hello: [{ world: true }, { world: true }] } }
  */

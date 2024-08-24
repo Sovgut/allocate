@@ -20,5 +20,13 @@ import type { Key, Rest } from '@/utils/pick/types'
 export function pick(path: string): [Key, Rest] {
   const [key, ...rest] = path.split('.')
 
+  if (/\w+\[\]/.test(key)) {
+    const arrayKey = key.slice(0, -2)
+
+    rest.unshift('[]')
+
+    return [arrayKey, rest.join('.')]
+  }
+
   return [key, rest.join('.')]
 }

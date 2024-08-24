@@ -28,7 +28,7 @@ yarn add @sovgut/allocate
 
 Replace keys in a simple object:
 
-```javascript
+```typescript
 import { allocate } from '@sovgut/allocate'
 
 const source = { foo: true, qux: false }
@@ -41,7 +41,7 @@ allocate(source, schema) // { bar: true }
 
 Handle nested structures with dot notation:
 
-```javascript
+```typescript
 import { allocate } from '@sovgut/allocate'
 
 const source = { foo: { bar: true, baz: false } }
@@ -54,7 +54,7 @@ allocate(source, schema) // { bar: { qux: false } }
 
 Apply key replacement to each object in an array:
 
-```javascript
+```typescript
 import { allocate } from '@sovgut/allocate'
 
 const source = [{ foo: true }, { foo: true, bar: 123 }]
@@ -67,18 +67,18 @@ allocate(source, schema) // [{ bar: true }, { bar: true }]
 
 Work with deeply nested arrays and objects:
 
-```javascript
+```typescript
 import { allocate } from '@sovgut/allocate'
 
 const source = { foo: { bar: [{ baz: true }, { baz: true }] } }
-const schema = { 'foo.bar.*.baz': 'foo.bar.*.qux' }
+const schema = { 'foo.bar[].baz': 'foo.bar[].qux' }
 
 allocate(source, schema) // { foo: { bar: [{ qux: true }, { qux: true }] } }
 ```
 
 ## API
 
-```ts
+```typescript
 /**
  * Transforms the keys of an object or an array of objects according to a specified schema.
  *
