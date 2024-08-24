@@ -58,7 +58,7 @@ Apply key replacement to each object in an array:
 import { allocate } from '@sovgut/allocate'
 
 const source = [{ foo: true }, { foo: true, bar: 123 }]
-const schema = { foo: 'bar' }
+const schema = { '[].foo': '[].bar' }
 
 allocate(source, schema) // [{ bar: true }, { bar: true }]
 ```
