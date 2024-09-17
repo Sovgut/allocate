@@ -46,7 +46,7 @@
     "lint-staged": "^15.2.9",
     "simple-git-hooks": "^2.11.1",
     "typescript": "^5.5.4",
-    "vite": "^5.4.2",
+    "vite": "^5.4.6",
     "vite-plugin-dts": "^4.0.3",
     "vitest": "^2.0.5"
   },
