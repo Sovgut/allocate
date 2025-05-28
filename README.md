@@ -29,7 +29,7 @@ yarn add @sovgut/allocate
 Replace keys in a simple object:
 
 ```typescript
-import { allocate } from '@sovgut/allocate'
+import { Allocate } from '@sovgut/allocate'
 
 const source = { foo: true, qux: false }
 const schema = { foo: 'bar' }
@@ -42,7 +42,7 @@ allocate(source, schema) // { bar: true }
 Handle nested structures with dot notation:
 
 ```typescript
-import { allocate } from '@sovgut/allocate'
+import { Allocate } from '@sovgut/allocate'
 
 const source = { foo: { bar: true, baz: false } }
 const schema = { 'foo.baz': 'bar.qux' }
@@ -55,7 +55,7 @@ allocate(source, schema) // { bar: { qux: false } }
 Apply key replacement to each object in an array:
 
 ```typescript
-import { allocate } from '@sovgut/allocate'
+import { Allocate } from '@sovgut/allocate'
 
 const source = [{ foo: true }, { foo: true, bar: 123 }]
 const schema = { '[].foo': '[].bar' }

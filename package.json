@@ -1,7 +1,7 @@
 {
   "name": "@sovgut/allocate",
   "type": "module",
-  "version": "3.0.1",
+  "version": "4.0.0",
   "author": {
     "name": "Serhii Sovhut",
     "url": "https://github.com/Sovgut"
@@ -24,36 +24,28 @@
     "key-allocation",
     "key-replacement"
   ],
-  "exports": {
-    ".": {
-      "import": "./dist/main.js"
-    }
-  },
-  "main": "./dist/main.js",
-  "module": "./dist/main.js",
-  "types": "./dist/main.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "test": "vitest run",
     "build": "tsc && vite build"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^2.27.1",
-    "@types/node": "^20.16.1",
-    "eslint": "^8.57.0",
-    "lint-staged": "^15.2.9",
-    "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.2",
-    "vite-plugin-dts": "^4.0.3",
-    "vitest": "^2.0.5"
+    "@types/node": "^22.15.23",
+    "jsdom": "^26.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vite-plugin-dts": "^4.5.4",
+    "vitest": "^3.1.4"
   },
-  "simple-git-hooks": {
-    "pre-commit": "npx lint-staged"
-  },
-  "lint-staged": {
-    "*": "eslint --fix"
+  "files": [
+    "dist"
+  ],
+  "main": "./dist/main.js",
+  "types": "./dist/main.d.ts",
+  "module": "./dist/main.js",
+  "exports": {
+    ".": {
+      "import": "./dist/main.js",
+      "types": "./dist/main.d.ts"
+    }
   }
 }
