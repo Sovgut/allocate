@@ -249,5 +249,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 <p align="center">
   <a href="https://github.com/sovgut/allocate">GitHub</a> •
   <a href="https://www.npmjs.com/package/@sovgut/allocate">npm</a> •
-  <a href="#-api-reference">Documentation</a>
+  <a href="#api-reference">Documentation</a>
 </p>
