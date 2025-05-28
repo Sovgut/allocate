@@ -3,21 +3,21 @@ name: Workflow
 on:
   push:
     branches:
-      - main
+      - master
     paths:
       - "package.json"
 
 jobs:
   check-version:
     name: Package
-    uses: Sovgut/allocate/.github/workflows/check-version.yml@main
+    uses: Sovgut/allocate/.github/workflows/check-version.yml@master
 
   build:
     name: Package
     needs:
       - check-version
     if: needs.check-version.outputs.is-changed == 'true'
-    uses: Sovgut/allocate/.github/workflows/build.yml@main
+    uses: Sovgut/allocate/.github/workflows/build.yml@master
     with:
       node-version: '20.x'
       package-version: ${{ needs.check-version.outputs.version }}
@@ -27,7 +27,7 @@ jobs:
     needs:
       - check-version
     if: needs.check-version.outputs.is-changed == 'true'
-    uses: Sovgut/allocate/.github/workflows/test.yml@main
+    uses: Sovgut/allocate/.github/workflows/test.yml@master
     with:
       node-version: '20.x'
 
@@ -37,7 +37,7 @@ jobs:
       - check-version
       - build
       - test
-    uses: Sovgut/allocate/.github/workflows/deploy-npm.yml@main
+    uses: Sovgut/allocate/.github/workflows/deploy-npm.yml@master
     secrets:
       NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
     with:
@@ -50,7 +50,7 @@ jobs:
       - check-version
       - build
       - test
-    uses: Sovgut/allocate/.github/workflows/deploy-github.yml@main
+    uses: Sovgut/allocate/.github/workflows/deploy-github.yml@master
     with:
       node-version: '20.x'
       package-version: ${{ needs.check-version.outputs.version }}
