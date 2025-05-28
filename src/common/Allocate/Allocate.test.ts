@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { allocate } from './Allocate';
+import { allocate } from './Allocate.ts';
 
 describe('allocate', () => {
   describe('Basic Key Replacement', () => {
